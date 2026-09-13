@@ -34,7 +34,12 @@ export async function generate({ systemInstruction, contents, generationConfig =
     body: JSON.stringify({
       systemInstruction: { parts: [{ text: systemInstruction }] },
       contents,
-      generationConfig: { temperature: 0.2, maxOutputTokens: 700, ...generationConfig }
+    generationConfig: {
+      temperature: 0.2,
+      maxOutputTokens: 8192,
+      thinkingConfig: { thinkingLevel: 'high' },
+      ...generationConfig
+    }     
     })
   });
 
